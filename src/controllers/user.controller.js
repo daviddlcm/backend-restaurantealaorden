@@ -19,7 +19,7 @@ const postUser = async (req,res) => {
         //     expiresIn: 86400
         // })
 
-        return res.status(201).json({
+        return res.json({
             message:"User created",
             user,
             success: true

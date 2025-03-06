@@ -33,5 +33,32 @@ class Order{
 
         return result.map(order => new Order(order))
     }
+
+    static async getById(id_order){
+        const connection = await db.createConnection()
+        const [result] = await connection.execute("SELECT * FROM orders WHERE id_order = ?", [id_order])
+
+        connection.end()
+
+        if(result.length == 0){
+            return null
+        }
+
+        return new Order(result[0])
+    }
+    static async getTokenDeviceByIdUser(id_user){
+        const connection = await db.createConnection()
+        
+        const [result] = await connection.execute("SELECT token FROM users WHERE id_user = ?", [id_user])
+        
+        connection.end()
+
+        if(result.length == 0){
+            return null
+        }
+
+        return result[0].token
+    }
+    
 }
 module.exports = Order
