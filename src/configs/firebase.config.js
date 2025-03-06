@@ -10,3 +10,12 @@ if (!serviceAccount) {
 admin.initializeApp({
   credential: admin.credential.cert(require(serviceAccount))
 });
+
+module.exports = admin.messaging()
+
+
+// var serviceAccount = requires("../../archivojson.json")
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });

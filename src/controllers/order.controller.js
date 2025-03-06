@@ -41,7 +41,7 @@ const confirmOrder = async (req, res) => {
             token: registrationToken
         }
 
-        const response = await messaging.messaging().send(message)
+        const response = await messaging.send(message)
         console.log("Successfully sent message:", response)
 
         return res.status(200).json({message: "Order confirmed"})
@@ -71,7 +71,7 @@ const sendOrder = async (req,res) => {
             token: token_device
         }
 
-        const response = await messaging.messaging().send(message)
+        const response = await messaging.send(message)
         console.log("Successfully sent message:", response)
 
         return res.status(200).json({message: "Order sended"})
