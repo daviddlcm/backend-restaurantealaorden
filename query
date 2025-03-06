@@ -1,0 +1,39 @@
+CREATE DATABASE restaurantealaorden;
+
+use restaurantealaorden;
+
+CREATE TABLE users(
+	id_user INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(15) NOT NULL,
+    email VARCHAR(60) NOT NULL,
+    password VARCHAR(200) NOT NULL,
+    nombre VARCHAR(20) NOT NULL,
+    token VARCHAR(200) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE productos(
+	id_producto INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(40),
+    descripcion VARCHAR(40),
+    precio INT UNSIGNED
+);
+
+
+
+CREATE TABLE orders(
+	id_order INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    place VARCHAR(100) NOT NULL,
+    cantidad INT UNSIGNED NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id_user INT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE
+);
+
+INSERT INTO productos (nombre, descripcion, precio) VALUES
+('Tacos al Pastor', 'Tortilla con carne de cerdo', 50),
+('Enchiladas Verdes', 'Tortillas bañadas en salsa verde', 75),
+('Chiles en Nogada', 'Chile poblano con relleno y salsa', 150),
+('Pozole', 'Caldo de maíz con carne', 90),
+('Tamales', 'Masa rellena con carne o dulce', 40);
