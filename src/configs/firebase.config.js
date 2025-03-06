@@ -1,6 +1,6 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("../../restaurante-a-la-orden-firebase-adminsdk-fbsvc-14fd214012.json");
+var serviceAccount = require("../../"+process.env.FIREBASE_KEY);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
